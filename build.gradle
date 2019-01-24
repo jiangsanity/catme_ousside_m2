@@ -1,6 +1,19 @@
-task hello {
-    doLast {
-        println 'hello world'
-    }
+task compileJava {
+    //compiles and builds the project
 }
 
+task compileTest {
+    //compiles the junit tasks for the project
+}
+
+task javadoc {
+    //creates the html docs for the project
+}
+
+task clean {
+    //removes all the files created by this project
+}
+
+task {
+    //create the executable jar file for project
+}

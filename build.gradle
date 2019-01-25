@@ -1,14 +1,6 @@
 apply plugin: 'java'
 defaultTasks 'jar'
 
-sourceSets {
-    main {
-        java {
-            srcDirs = ['src/main']
-        }
-    }
-}
-
 dependencies {
     compileClasspath fileTree(dir: 'lib', include: ['*.jar'])
 }
@@ -17,13 +9,9 @@ jar {
     baseName = 'app'
     version = '1.0'
     manifest {
-        attributes 'Main-Class': 'edu.gatech.oad.antlab.pkg1.AntLabMain'
+        attributes 'Main-Class': 'edu.gatech.oad.antlab.pkg1.AntLabMain',
+                    'Class-Path': '../../lib/resources.jar'
     }
-
-    from {
-        configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-    }
-
 }
 
 task runJar(type: JavaExec) {

@@ -1,4 +1,5 @@
 apply plugin: 'java'
+defaultTasks 'jar'
 
 sourceSets {
     main {
@@ -24,3 +25,11 @@ jar {
     }
 
 }
+
+task runJar(type: JavaExec) {
+    dependsOn jar
+    classpath = files('build/libs/app-1.0.jar')
+    main = 'edu.gatech.oad.antlab.pkg1.AntLabMain'
+}
+
+build.finalizedBy(runJar)

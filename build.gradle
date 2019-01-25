@@ -1,22 +1,26 @@
-task compileJava {
-    //compiles and builds the project
+apply plugin: 'java'
+// defaultTasks: 'jar'
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main']
+        }
+    }
 }
 
-task compileTest {
-    //compiles the junit tasks for the project
+dependencies {
+    compileClasspath fileTree(dir: 'lib', include: ['*.jar'])
 }
 
-task javadoc {
-    //creates the html docs for the project
+jar {
+    baseName = 'app'
+    version = '1.0'
+    manifest {
+        attributes 'Main-Class': 'edu.gatech.oad.antlab.pkg1.AntLabMain'
+    }
 }
 
-task clean {
-    //removes all the files created by this project
-}
-
-task jar {
-    //create the executable jar file for project
-}
 
 task hello {
     doLast{
